@@ -9,7 +9,7 @@ RUN npm run build
 FROM node:20-slim
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --ignore-scripts
 COPY --from=builder /app/dist/ dist/
 LABEL org.opencontainers.image.source="https://github.com/zcag/readdown-mcp"
 LABEL org.opencontainers.image.description="MCP server for converting web pages to clean LLM-optimized Markdown"
